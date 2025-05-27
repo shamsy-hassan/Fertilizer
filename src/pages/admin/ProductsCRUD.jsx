@@ -172,14 +172,22 @@ export default function ProductsCRUD() {
             required
             className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500"
           />
-          <input
-            type="url"
-            name="img"
-            placeholder="Image URL"
-            value={newProduct.img}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500"
-          />
+        <input
+  type="file"
+  accept="image/*"
+  onChange={(e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewProduct((prev) => ({ ...prev, img: reader.result }));
+      };
+      reader.readAsDataURL(file); // Converts image to Base64
+    }
+  }}
+  className="w-full px-4 py-2 border border-gray-300 rounded focus:ring-2 focus:ring-green-500"
+/>
+
           <input
             type="text"
             name="description"

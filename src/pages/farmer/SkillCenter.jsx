@@ -15,9 +15,11 @@ export default function SkillCenter() {
       })
   }, [])
 
-  const filteredSkills = categoryFilter === 'all'
-    ? skills
-    : skills.filter(skill => skill.category === categoryFilter)
+  const filteredSkills = skills.filter(skill =>
+    categoryFilter === 'all' || skill.category === categoryFilter
+  )
+
+  const uniqueCategories = [...new Set(skills.map(skill => skill.category))]
 
   const toggleExpand = (id) => {
     setExpandedSkillIds(prev =>
@@ -40,15 +42,16 @@ export default function SkillCenter() {
           className="px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500"
         >
           <option value="all">All Categories</option>
-          <option value="Planting">Planting</option>
-          <option value="Protection">Protection</option>
-          <option value="Soil">Soil</option>
-          <option value="Harvesting">Harvesting</option>
+          {uniqueCategories.map(category => (
+            <option key={category} value={category}>{category}</option>
+          ))}
         </select>
       </div>
 
       {loading ? (
         <div className="text-gray-600 text-lg">Loading skills...</div>
+      ) : filteredSkills.length === 0 ? (
+        <div className="text-gray-500 text-md">No skills found for selected category.</div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredSkills.map(skill => {
@@ -56,9 +59,7 @@ export default function SkillCenter() {
             return (
               <div
                 key={skill.id}
-                className={`bg-white rounded-xl shadow-md p-5 border border-gray-100 hover:shadow-lg transition duration-300 ${
-                  isExpanded ? 'h-auto' : 'h-auto'
-                }`}
+                className="bg-white rounded-xl shadow-md p-5 border border-gray-100 hover:shadow-lg transition duration-300"
               >
                 <div className="flex items-center justify-between mb-3">
                   <h3 className="text-xl font-bold text-blue-700">{skill.title}</h3>

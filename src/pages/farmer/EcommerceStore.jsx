@@ -83,22 +83,46 @@ export default function EcommerceStore() {
 
       {/* Product Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-10">
-        {products.map((product) => (
-          <div
-            key={product.id}
-            className="bg-white border rounded-lg p-4 shadow hover:shadow-md transition"
-          >
-            <h3 className="text-lg font-semibold text-gray-800">{product.name}</h3>
-            <p className="text-green-600 font-bold">KSh {product.price}</p>
-            <button
-              onClick={() => addToCart(product)}
-              className="mt-3 inline-block w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
-            >
-              Add to Cart
-            </button>
-          </div>
-        ))}
+  {products.map((product) => (
+    <div
+      key={product.id}
+      className="max-w-sm bg-white rounded overflow-hidden shadow-lg"
+    >
+      {/* Product Image */}
+      {product.img && (
+        <img
+          className="w-full h-48 object-cover"
+          src={product.img}
+          alt={product.name}
+        />
+      )}
+
+      {/* Product Info */}
+      <div className="px-6 py-4">
+        <div className="font-bold text-xl mb-2 text-green-700">{product.name}</div>
+        <p className="text-gray-700 text-base">{product.description}</p>
+        <p className="text-green-600 font-bold mt-2">KSh {product.price}</p>
       </div>
+
+      {/* Tags or Category (optional) */}
+      <div className="px-6 pt-2 pb-4">
+        <span className="inline-block bg-green-100 rounded-full px-3 py-1 text-sm font-semibold text-green-700 mr-2">
+          {product.categoryName || "Product"}
+        </span>
+      </div>
+
+      {/* Add to Cart Button */}
+      <div className="px-6 pb-4">
+        <button
+          onClick={() => addToCart(product)}
+          className="w-full px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition"
+        >
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  ))}
+</div>
 
       {/* Checkout Button or Modal */}
       {checkoutOpen ? (
