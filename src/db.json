@@ -1,0 +1,198 @@
+{
+  "farmers": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "phone": "0712345678",
+      "region": "Northeastern",
+      "joined": "2023-01-15"
+    }
+  ],
+  "categories": [
+    {
+      "id": "1",
+      "name": "Seeds"
+    },
+    {
+      "id": "2",
+      "name": "Fertilizers"
+    },
+    {
+      "id": "3",
+      "name": "Pesticides"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Maize Seed",
+      "price": 500,
+      "categoryId": 1
+    },
+    {
+      "id": "2",
+      "name": "Bean Seed",
+      "price": 400,
+      "categoryId": 1
+    },
+    {
+      "id": "3",
+      "name": "Sorghum Seed",
+      "price": 450,
+      "categoryId": 1
+    },
+    {
+      "id": "4",
+      "name": "NPK Fertilizer",
+      "price": 1200,
+      "categoryId": 2
+    },
+    {
+      "id": "5",
+      "name": "DAP Fertilizer",
+      "price": 1300,
+      "categoryId": 2
+    },
+    {
+      "id": "6",
+      "name": "UREA Fertilizer",
+      "price": 1100,
+      "categoryId": 2
+    },
+    {
+      "id": "7",
+      "name": "Insecticide",
+      "price": 800,
+      "categoryId": 3
+    },
+    {
+      "id": "8",
+      "name": "Fungicide",
+      "price": 750,
+      "categoryId": 3
+    },
+    {
+      "id": "9",
+      "name": "Herbicide",
+      "price": 900,
+      "categoryId": 3
+    },
+    {
+      "id": "f05e",
+      "name": "jumaa",
+      "price": 16,
+      "description": "asdfghjhgfd",
+      "img": "blob:https://web.whatsapp.com/f819fadc-81d4-4f49-8ad3-76fa6da010c6",
+      "categoryId": "1"
+    }
+  ],
+  "skills": [
+    {
+      "id": "1",
+      "title": "Soil Preparation",
+      "category": "Land Management",
+      "description": "Learn how to properly prepare soil before planting crops."
+    },
+    {
+      "id": "2",
+      "title": "Irrigation Techniques",
+      "category": "Water Management",
+      "description": "Different methods to effectively irrigate your farm."
+    },
+    {
+      "id": "3",
+      "title": "Pest Control",
+      "category": "Crop Protection",
+      "description": "Identify and manage pests using eco-friendly methods."
+    }
+  ],
+  "orders": [
+    {
+      "id": "1",
+      "customer": "John Doe",
+      "products": [
+        {
+          "id": 1,
+          "name": "Maize Seed",
+          "price": 500,
+          "categoryId": 1
+        },
+        {
+          "id": 4,
+          "name": "NPK Fertilizer",
+          "price": 1200,
+          "categoryId": 2
+        }
+      ],
+      "total": 1700,
+      "status": "pending"
+    },
+    {
+      "id": "2",
+      "customer": "Jane Farmer",
+      "products": [
+        {
+          "id": 7,
+          "name": "Insecticide",
+          "price": 800,
+          "categoryId": 3
+        }
+      ],
+      "total": 800,
+      "status": "delivered"
+    },
+    {
+      "id": "3",
+      "customer": "Ali Musa",
+      "products": [
+        {
+          "id": 2,
+          "name": "Bean Seed",
+          "price": 400,
+          "categoryId": 1
+        }
+      ],
+      "total": 400,
+      "status": "completed"
+    },
+    {
+      "id": "2794",
+      "location": "mariakani",
+      "phone": "",
+      "notes": "",
+      "products": [
+        {
+          "id": "1",
+          "name": "Maize Seed",
+          "price": 500,
+          "categoryId": 1
+        },
+        {
+          "id": "1",
+          "name": "Maize Seed",
+          "price": 500,
+          "categoryId": 1
+        }
+      ],
+      "total": 1000,
+      "status": "delivered"
+    },
+    {
+      "id": "da39",
+      "location": "mar",
+      "phone": "",
+      "notes": "",
+      "products": [
+        {
+          "id": "7",
+          "name": "Insecticide",
+          "price": 800,
+          "categoryId": 3
+        }
+      ],
+      "total": 800,
+      "status": "pending"
+    }
+  ],
+  "loans": []
+}
