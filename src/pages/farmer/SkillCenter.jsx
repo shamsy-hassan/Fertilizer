@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
 export default function SkillCenter() {
   const [skills, setSkills] = useState([])
   const [loading, setLoading] = useState(true)
   const [categoryFilter, setCategoryFilter] = useState('all')
+  const [expandedSkillIds, setExpandedSkillIds] = useState([])
 
   useEffect(() => {
     fetch('http://localhost:3000/skills')
@@ -15,9 +15,15 @@ export default function SkillCenter() {
       })
   }, [])
 
-  const filteredSkills = categoryFilter === 'all' 
-    ? skills 
+  const filteredSkills = categoryFilter === 'all'
+    ? skills
     : skills.filter(skill => skill.category === categoryFilter)
+
+  const toggleExpand = (id) => {
+    setExpandedSkillIds(prev =>
+      prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
+    )
+  }
 
   return (
     <div className="p-6">
@@ -45,26 +51,37 @@ export default function SkillCenter() {
         <div className="text-gray-600 text-lg">Loading skills...</div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredSkills.map(skill => (
-            <div key={skill.id} className="bg-white rounded-xl shadow-md p-5 border border-gray-100 hover:shadow-lg transition">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-xl font-bold text-blue-700">{skill.title}</h3>
-                <span className="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-full">
-                  {skill.category}
-                </span>
+          {filteredSkills.map(skill => {
+            const isExpanded = expandedSkillIds.includes(skill.id)
+            return (
+              <div
+                key={skill.id}
+                className={`bg-white rounded-xl shadow-md p-5 border border-gray-100 hover:shadow-lg transition duration-300 ${
+                  isExpanded ? 'h-auto' : 'h-auto'
+                }`}
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-xl font-bold text-blue-700">{skill.title}</h3>
+                  <span className="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded-full">
+                    {skill.category}
+                  </span>
+                </div>
+                <p className="text-gray-600 mb-4">
+                  {isExpanded ? skill.fullDescription || skill.description : skill.description}
+                </p>
+
+                <div className="flex items-center justify-between text-sm text-gray-500">
+                  <span className="italic">Estimated: 30 min</span>
+                  <button
+                    onClick={() => toggleExpand(skill.id)}
+                    className="text-blue-600 hover:underline font-medium"
+                  >
+                    {isExpanded ? 'Show Less' : 'View Details →'}
+                  </button>
+                </div>
               </div>
-              <p className="text-gray-600 mb-4">{skill.description}</p>
-              <div className="flex items-center justify-between text-sm text-gray-500">
-                <span className="italic">Estimated: 30 min</span>
-                <Link
-                  to={`/farmer-dashboard/skills/${skill.id}`}
-                  className="text-blue-600 hover:underline font-medium"
-                >
-                  View Details →
-                </Link>
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       )}
     </div>

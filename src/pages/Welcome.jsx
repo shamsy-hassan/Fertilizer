@@ -11,7 +11,7 @@ export default function Welcome() {
           <img
             src="src/logo/FARMERS_HOME__4_-removebg-preview (1).png"
             alt="Farmers Home"
-            className="mx-auto w-40 h-auto mb-6"
+            className="mx-auto w-100 h-20 mb-6"
           />
 
           <h1 className="text-4xl font-bold sm:text-5xl bg-gradient-to-r from-green-300 to-white bg-clip-text text-transparent">

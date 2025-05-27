@@ -5,12 +5,18 @@ export default function SaccoPlatform() {
   const [loanAmount, setLoanAmount] = useState('');
   const [loanPurpose, setLoanPurpose] = useState('');
   const [loanStatus, setLoanStatus] = useState(null);
+  const [joinStatus, setJoinStatus] = useState(null);
 
   const handleLoanApplication = (e) => {
     e.preventDefault();
     setLoanStatus('pending');
     setLoanAmount('');
     setLoanPurpose('');
+  };
+
+  const handleJoinApplication = (e) => {
+    e.preventDefault();
+    setJoinStatus('submitted');
   };
 
   return (
@@ -61,39 +67,55 @@ export default function SaccoPlatform() {
         {activeTab === 'join' && (
           <div>
             <h2 className="text-xl font-semibold mb-4">Join Our SACCO</h2>
-            <form className="space-y-4">
-              <div>
-                <label className="block mb-1 font-medium">Full Name</label>
-                <input
-                  type="text"
-                  required
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
+            {!joinStatus ? (
+              <form onSubmit={handleJoinApplication} className="space-y-4">
+                <div>
+                  <label className="block mb-1 font-medium">Full Name</label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  />
+                </div>
+                <div>
+                  <label className="block mb-1 font-medium">ID Number</label>
+                  <input
+                    type="text"
+                    required
+                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  />
+                </div>
+                <div>
+                  <label className="block mb-1 font-medium">Initial Deposit (Minimum KSh 1000)</label>
+                  <input
+                    type="number"
+                    min="1000"
+                    required
+                    className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition"
+                >
+                  Submit Application
+                </button>
+              </form>
+            ) : (
+              <div className="bg-green-50 border border-green-200 rounded p-4">
+                <h3 className="text-lg font-bold text-green-700 mb-2">Application Submitted Successfully!</h3>
+                <p className="text-green-700">
+                  Thank you for applying to join our SACCO. Your application has been received and is being processed.
+                  We will contact you within 2 business days with the next steps.
+                </p>
+                <button
+                  onClick={() => setJoinStatus(null)}
+                  className="mt-4 bg-green-600 text-white px-4 py-1 rounded hover:bg-green-700 transition text-sm"
+                >
+                  Submit Another Application
+                </button>
               </div>
-              <div>
-                <label className="block mb-1 font-medium">ID Number</label>
-                <input
-                  type="text"
-                  required
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-              <div>
-                <label className="block mb-1 font-medium">Initial Deposit (Minimum KSh 1000)</label>
-                <input
-                  type="number"
-                  min="1000"
-                  required
-                  className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-green-500"
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition"
-              >
-                Submit Application
-              </button>
-            </form>
+            )}
           </div>
         )}
 

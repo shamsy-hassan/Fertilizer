@@ -4,9 +4,10 @@ export default function MyOrders() {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3001/orders?farmer=John%20Doe')
+    fetch('http://localhost:3000/orders?customer=John%20Doe')
       .then(res => res.json())
-      .then(data => setOrders(data));
+      .then(data => setOrders(data))
+      .catch(err => console.error("Failed to fetch orders:", err));
   }, []);
 
   return (
@@ -31,12 +32,24 @@ export default function MyOrders() {
                   {order.status}
                 </span>
               </div>
+              <div className="text-sm text-gray-700 mb-2">
+                <p className="font-medium">Delivery Location:</p>
+                <p>{order.deliveryLocation || "Not specified"}</p>
+              </div>
+              <div className="text-sm text-gray-700 mb-2">
+                <p className="font-medium">Payment Option:</p>
+                <p>{order.paymentOption || "Not specified"}</p>
+              </div>
+              <div className="text-sm text-gray-700 mb-2">
+                <p className="font-medium">Estimated Delivery:</p>
+                <p>{order.deliveryDate || "Not specified"}</p>
+              </div>
               <div className="text-sm text-gray-700">
                 <p className="font-medium mb-1">Products:</p>
                 <ul className="list-disc list-inside space-y-1">
                   {order.products.map(product => (
                     <li key={product.id}>
-                      {product.name} <span className="text-xs text-gray-500">({product.category})</span>
+                      {product.name} <span className="text-xs text-gray-500">(Category ID: {product.categoryId})</span>
                     </li>
                   ))}
                 </ul>
