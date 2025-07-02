@@ -4,6 +4,7 @@ import {
   FaShoppingCart, FaHandHoldingUsd,
   FaClipboardList, FaHome
 } from 'react-icons/fa';
+import { FcMoneyTransfer } from 'react-icons/fc';
 
 export default function FarmerSidebar() {
   return (
@@ -43,9 +44,33 @@ export default function FarmerSidebar() {
           </Link>
         </li>
         <li>
+          <Link to="/farmer-dashboard/my-loans" className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-100">
+            <FcMoneyTransfer className="text-xl" />
+            <span className="text-sm">My Loans</span>
+          </Link>
+        </li>
+        <li>
           <Link to="/farmer-dashboard/orders" className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-100">
             <FaClipboardList className="text-xl" />
             <span className="text-sm">Orders</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/farmer-dashboard/mycrops" className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-100">
+            <FaClipboardList className="text-xl" />
+            <span className="text-sm">MyCrops</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/farmer-dashboard/hire" className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-100">
+            <FaClipboardList className="text-xl" />
+            <span className="text-sm">Hire</span>
+          </Link>
+        </li>
+         <li>
+          <Link to="/farmer-dashboard/mymarket" className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-100">
+            <FaClipboardList className="text-xl" />
+            <span className="text-sm">MyMarket</span>
           </Link>
         </li>
       </ul>

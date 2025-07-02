@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
+import DashboardNavbar from "../components/DashboardNavbar";
 import AdminSidebar from "../components/AdminSidebar";
 import FarmerSidebar from "../components/FarmerSidebar";
 
@@ -7,15 +8,20 @@ export default function DashboardLayout() {
   const isAdmin = location.pathname.startsWith("/admin-dashboard");
 
   return (
-    <div className="flex h-[calc(100vh-5rem)]">
-      {/* Sidebar */}
-      <div className="w-[20rem] bg-white shadow-lg">
-        {isAdmin ? <AdminSidebar /> : <FarmerSidebar />}
-      </div>
+    <div className="flex flex-col h-screen">
+      {/* Shared dashboard navbar */}
+      <DashboardNavbar />
 
-      {/* Main content */}
-      <div className="flex-1 p-6 overflow-y-auto bg-gray-50">
-        <Outlet />
+      <div className="flex flex-1 overflow-hidden">
+        {/* Conditional Sidebar */}
+        <div className="w-[20rem] bg-white shadow-lg overflow-y-auto">
+          {isAdmin ? <AdminSidebar /> : <FarmerSidebar />}
+        </div>
+
+        {/* Main Content */}
+        <div className="flex-1 p-6 overflow-y-auto bg-gray-50">
+          <Outlet />
+        </div>
       </div>
     </div>
   );

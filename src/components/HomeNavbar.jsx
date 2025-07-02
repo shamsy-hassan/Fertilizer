@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaHome, FaInfoCircle, FaEnvelope } from 'react-icons/fa';
 
-export default function Navbar() {
+export default function HomeNavbar() {
   return (
     <nav className="fixed top-0 left-0 w-full bg-green-700 text-white shadow z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-25 flex items-center justify-between">

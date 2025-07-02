@@ -5,8 +5,10 @@ import {
   Outlet,
   useLocation,
 } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import HomeNavbar from "./components/HomeNavbar";
 import Footer from "./components/Footer";
+// Layouts
+import DashboardLayout from "./layouts/DashboardLayout";
 
 // Public Pages
 import Home from "./pages/Home";
@@ -26,6 +28,10 @@ import EcommerceStore from "./pages/farmer/EcommerceStore";
 import SaccoPlatform from "./pages/farmer/SaccoPlatform";
 import MyOrders from "./pages/farmer/MyOrders";
 import SkillCenter from "./pages/farmer/SkillCenter";
+import MyLoans from "./pages/farmer/MyLoans";
+import CropPlanner from "./pages/farmer/CropPlanner";
+import FarmProfessionals from "./pages/farmer/FarmProfessionals";
+import MyMarket from "./pages/farmer/MyMarket";
 
 // Admin Nested Pages
 import AdminHome from "./pages/admin/AdminHome";
@@ -35,6 +41,10 @@ import ProductsCRUD from "./pages/admin/ProductsCRUD";
 import OrdersOverview from "./pages/admin/OrdersOverview";
 import LoanRequests from "./pages/admin/LoanRequests";
 import DeliveryCoordination from "./pages/admin/DeliveryCoordination";
+import BroadcastCenter from "./pages/admin/BroadcastCenter"
+import CropTrendAnalysis from "./pages/admin/CropTrendAnalysis";
+import MarketFinder from "./pages/admin/MarketFinder";
+import SaccoManagement from "./pages/admin/SaccoManagement";
 
 import "./index.css";
 
@@ -47,7 +57,7 @@ function MainLayout() {
 
   return (
     <div className="main-layout">
-      <Navbar />
+      <HomeNavbar />
       <main className="main-content min-h-screen pt-20">
         <Outlet />
       </main>
@@ -55,33 +65,38 @@ function MainLayout() {
     </div>
   );
 }
-
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Layout with Navbar + Footer (conditionally hidden on dashboards) */}
+
+        {/* ✅ Public Routes with HomeNavbar + Footer */}
         <Route element={<MainLayout />}>
-          {/* Public Pages */}
           <Route path="/" element={<Home />} />
           <Route path="/welcome" element={<Welcome />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/farmer-login" element={<FarmerLogin />} />
           <Route path="/admin-login" element={<AdminLogin />} />
+        </Route>
 
-          {/* ✅ Farmer Dashboard + Nested Routes */}
-          <Route path="/farmer-dashboard/*" element={<FarmerDashboard />}>
+        {/* ✅ Farmer Dashboard Layout with DashboardNavbar + FarmerSidebar */}
+        <Route element={<DashboardLayout />}>
+          <Route path="/farmer-dashboard" element={<FarmerDashboard />}>
             <Route index element={<AgroClimateAdvice />} />
             <Route path="climate" element={<AgroClimateAdvice />} />
             <Route path="skills" element={<SkillCenter />} />
             <Route path="store" element={<EcommerceStore />} />
             <Route path="sacco" element={<SaccoPlatform />} />
             <Route path="orders" element={<MyOrders />} />
+            <Route path="my-loans" element={<MyLoans />} />
+            <Route path="mycrops" element={<CropPlanner />} />
+            <Route path="hire" element={<FarmProfessionals />} />
+            <Route path="mymarket" element={<MyMarket />} />
           </Route>
 
-          {/* ✅ Admin Dashboard + Nested Routes */}
-          <Route path="/admin-dashboard/*" element={<AdminDashboard />}>
+          {/* ✅ Admin Dashboard Layout with DashboardNavbar + AdminSidebar */}
+          <Route path="/admin-dashboard" element={<AdminDashboard />}>
             <Route index element={<AdminHome />} />
             <Route path="farmers" element={<FarmerManagement />} />
             <Route path="skills" element={<SkillsCRUD />} />
@@ -89,6 +104,10 @@ function App() {
             <Route path="orders" element={<OrdersOverview />} />
             <Route path="loans" element={<LoanRequests />} />
             <Route path="delivery" element={<DeliveryCoordination />} />
+            <Route path="broadcast" element={<BroadcastCenter />} />
+            <Route path="croptrend" element={<CropTrendAnalysis />} />
+            <Route path="market" element={<MarketFinder />} />
+            <Route path="sacco" element={<SaccoManagement />} />
           </Route>
         </Route>
       </Routes>

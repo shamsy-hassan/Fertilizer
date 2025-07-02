@@ -6,6 +6,12 @@ import EcommerceStore from "./EcommerceStore";
 import SaccoPlatform from "./SaccoPlatform";
 import MyOrders from "./MyOrders";
 import SkillCenter from "./SkillCenter";
+import MyLoans from "./MyLoans";
+import CropPlanner from "./CropPlanner";
+import FarmProfessionals from "./FarmProfessionals";
+import MyMarket from "./MyMarket";
+
+
 
 export default function FarmerDashboard() {
   return (
@@ -24,6 +30,10 @@ export default function FarmerDashboard() {
           <Route path="store" element={<EcommerceStore />} />
           <Route path="sacco" element={<SaccoPlatform />} />
           <Route path="orders" element={<MyOrders />} />
+           <Route path="my-loans" element={<MyLoans />} />
+            <Route path="mycrops" element={<CropPlanner />} />
+            <Route path="hire" element={<FarmProfessionals />} />
+            <Route path="mymarket" element={<MyMarket />} />
         </Routes>
       </div>
     </div>

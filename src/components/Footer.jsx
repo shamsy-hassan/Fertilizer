@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-4 xl:pr-8">
             <img
               className="w-auto h-9"
-              src="https://cdn.rareblocks.xyz/collection/celebration/images/logo.svg"
+              src="src/logo/FARMERS_HOME__4_-removebg-preview (1).png"
               alt="Farmers Home Logo"
             />
             <p className="text-base leading-relaxed text-gray-600 mt-7">

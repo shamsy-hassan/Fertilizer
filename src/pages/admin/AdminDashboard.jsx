@@ -7,6 +7,10 @@ import ProductsCRUD from './ProductsCRUD';
 import OrdersOverview from './OrdersOverview';
 import LoanRequests from './LoanRequests';
 import DeliveryCoordination from './DeliveryCoordination';
+import BroadcastCenter from './BroadcastCenter';
+import CropTrendAnalysis from './CropTrendAnalysis';
+import MarketFinder from './MarketFinder';
+import SaccoManagement from './SaccoManagement';
 
 export default function AdminDashboard() {
   return (
@@ -24,6 +28,10 @@ export default function AdminDashboard() {
           <Route path="/orders" element={<OrdersOverview />} />
           <Route path="/loans" element={<LoanRequests />} />
           <Route path="/delivery" element={<DeliveryCoordination />} />
+          <Route path='/broadcast' element = {<BroadcastCenter/>}/>
+          <Route path='croptrend' element = {<CropTrendAnalysis/>}/>
+          <Route path='market' element = {<MarketFinder/>}/>
+          <Route path='sacco' element = {<SaccoManagement/>}/>
         </Routes>
       </div>
     </div>
