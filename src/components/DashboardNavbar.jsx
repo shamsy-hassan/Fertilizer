@@ -14,7 +14,7 @@ export default function DashboardNavbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-green-700 text-white shadow z-50">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 h-20 flex items-center justify-between">
+      <div className="max-w-8xl mx-auto px-4 sm:px-6 lg:px-10 h-25 flex items-center justify-between">
         {/* Left: Logo */}
         <div className="flex items-center space-x-2">
           <img
@@ -42,15 +42,30 @@ export default function DashboardNavbar() {
             </span>
           </Link>
 
-          {/* Profile */}
-          <button
-            onClick={() => setShowProfileMenu(!showProfileMenu)}
-            className="relative"
-          >
-            <UserCircleIcon className="w-7 h-7" />
-          </button>
+          {/* Profile Dropdown */}
+          <div className="relative">
+            <button onClick={() => setShowProfileMenu(!showProfileMenu)}>
+              <UserCircleIcon className="w-7 h-7" />
+            </button>
+            {showProfileMenu && (
+              <div className="absolute right-0 mt-2 bg-white text-black rounded shadow-md w-44 z-50">
+                <Link
+                  to="/profile"
+                  className="block px-4 py-2 hover:bg-gray-100 text-left"
+                >
+                  Profile
+                </Link>
+                <Link
+                  to="/account"
+                  className="block px-4 py-2 hover:bg-gray-100 text-left"
+                >
+                  My Account
+                </Link>
+              </div>
+            )}
+          </div>
 
-          {/* ✅ Logout - right of the icons */}
+          {/* ✅ Logout - outside of dropdown */}
           <Link
             to="/"
             className="flex items-center space-x-1 hover:underline"

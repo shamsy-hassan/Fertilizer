@@ -82,7 +82,7 @@ function App() {
 
         {/* ✅ Farmer Dashboard Layout with DashboardNavbar + FarmerSidebar */}
         <Route element={<DashboardLayout />}>
-          <Route path="/farmer-dashboard" element={<FarmerDashboard />}>
+          <Route path="/farmer-dashboard/*" element={<FarmerDashboard />}>
             <Route index element={<AgroClimateAdvice />} />
             <Route path="climate" element={<AgroClimateAdvice />} />
             <Route path="skills" element={<SkillCenter />} />
