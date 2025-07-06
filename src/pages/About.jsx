@@ -1,6 +1,6 @@
 export default function About() {
   return (
-    <section className="py-16 bg-white sm:py-20 lg:py-24">
+    <section className="py-16 bg-gradient-to-r from-green-200 via-white to-green-50 sm:py-20 lg:py-24">
       <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         {/* Header */}
         <div className="max-w-3xl mx-auto text-center">

@@ -4,11 +4,11 @@ FaUsers, FaBook, FaSeedling,FaHandHoldingUsd,
   FaClipboardCheck, FaMoneyBillWave,FaBusinessTime,FaBroadcastTower,
   FaTruck, FaHome
 } from 'react-icons/fa';
-import { FaArrowTrendUp } from 'react-icons/fa6';
+import { FaArrowTrendUp , FaPeopleGroup } from 'react-icons/fa6';
 
 export default function AdminSidebar() {
   return (
-    <aside className="h-screen w-[20rem] bg-white p-4 shadow-xl flex flex-col pt-20">
+    <aside className="h-screen w-[20rem] bg-gradient-to-r from-green-200 via-white to-green-50 p-4 shadow-xl flex flex-col pt-20">
       <div className="mb-6 text-center">
         <h3 className="text-2xl font-bold text-blue-gray-900">Admin Portal</h3>
       </div>
@@ -35,6 +35,12 @@ export default function AdminSidebar() {
           <Link to="/admin-dashboard/products" className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-100">
             <FaSeedling className="text-xl" />
             <span className="text-sm">Products</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/admin-dashboard/sacco" className="flex items-center gap-2 p-3 rounded-lg hover:bg-gray-100">
+            <FaPeopleGroup  className="text-xl" />
+            <span className="text-sm">Saccos</span>
           </Link>
         </li>
         <li>

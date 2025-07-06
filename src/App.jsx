@@ -7,6 +7,9 @@ import {
 } from "react-router-dom";
 import HomeNavbar from "./components/HomeNavbar";
 import Footer from "./components/Footer";
+import Notification from "./pages/Notification";
+import Messages from "./pages/Messages";
+
 // Layouts
 import DashboardLayout from "./layouts/DashboardLayout";
 
@@ -71,14 +74,17 @@ function App() {
       <Routes>
 
         {/* ✅ Public Routes with HomeNavbar + Footer */}
-        <Route element={<MainLayout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/welcome" element={<Welcome />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/farmer-login" element={<FarmerLogin />} />
-          <Route path="/admin-login" element={<AdminLogin />} />
-        </Route>
+       <Route element={<MainLayout />}>
+  <Route path="/" element={<Home />} />
+  <Route path="/welcome" element={<Welcome />} />
+  <Route path="/about" element={<About />} />
+  <Route path="/contact" element={<Contact />} />
+  <Route path="/farmer-login" element={<FarmerLogin />} />
+  <Route path="/admin-login" element={<AdminLogin />} />
+  <Route path="/notification" element={<Notification />} />
+  <Route path="/messages" element={<Messages />} />
+</Route>
+
 
         {/* ✅ Farmer Dashboard Layout with DashboardNavbar + FarmerSidebar */}
         <Route element={<DashboardLayout />}>

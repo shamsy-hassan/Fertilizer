@@ -43,7 +43,7 @@ export default function DeliveryCoordination() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto p-6 bg-gradient-to-r from-green-200 via-white to-green-50">
       <h1 className="text-3xl font-bold mb-6 text-center">Delivery Coordination</h1>
 
       <div className="mb-6 flex justify-center">

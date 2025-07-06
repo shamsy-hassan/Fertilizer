@@ -23,124 +23,90 @@ export default function AdminLogin() {
   };
 
   return (
-    <section className="py-10 bg-gray-50 sm:py-16 lg:py-24 min-h-screen">
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
-            Admin Login
-          </h2>
-          <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600">
-            Access the administration dashboard
-          </p>
-        </div>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-green-200 via-white to-green-50">
+      <div className="py-6 px-4">
+        <div className="grid lg:grid-cols-2 items-center gap-6 max-w-6xl w-full">
+          {/* Login Form */}
+          <div className="border border-green-200 rounded-lg p-6 max-w-md shadow-[0_2px_22px_-4px_rgba(93,96,127,0.1)] bg-white max-lg:mx-auto">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="mb-12">
+                <h1 className="text-green-900 text-3xl font-semibold">Admin Login</h1>
+                <p className="text-slate-600 text-[15px] mt-6 leading-relaxed">
+                  Sign in as admin to manage all operations in the Farmers Home system.
+                </p>
+              </div>
 
-        <div className="relative max-w-md mx-auto mt-8 md:mt-16">
-          <div className="overflow-hidden bg-white rounded-md shadow-md">
-            <div className="px-4 py-6 sm:px-8 sm:py-7">
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {error && (
-                  <div className="text-red-600 text-sm font-medium text-center">
-                    {error}
-                  </div>
-                )}
+              {error && (
+                <div className="text-red-600 text-sm font-medium text-center">{error}</div>
+              )}
 
-                <div>
-                  <label htmlFor="username" className="text-base font-medium text-gray-900">
-                    Username
+              <div>
+                <label className="text-slate-900 text-sm font-medium mb-2 block">Username</label>
+                <div className="relative flex items-center">
+                  <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    placeholder="Enter user name"
+                    className="w-full text-sm text-slate-900 border border-slate-300 pl-4 pr-10 py-3 rounded-lg outline-green-600 bg-green-50 focus:bg-white"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="text-slate-900 text-sm font-medium mb-2 block">Password</label>
+                <div className="relative flex items-center">
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    placeholder="Enter password"
+                    className="w-full text-sm text-slate-900 border border-slate-300 pl-4 pr-10 py-3 rounded-lg outline-green-600 bg-green-50 focus:bg-white"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-wrap items-center justify-between gap-4">
+                <div className="flex items-center">
+                  <input
+                    id="remember-me"
+                    type="checkbox"
+                    className="h-4 w-4 text-green-600 focus:ring-green-500 border-slate-300 rounded"
+                  />
+                  <label htmlFor="remember-me" className="ml-3 block text-sm text-slate-900">
+                    Remember me
                   </label>
-                  <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg
-                        className="w-5 h-5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"
-                        />
-                      </svg>
-                    </div>
-                    <input
-                      type="text"
-                      id="username"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      placeholder="Enter your username"
-                      className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
-                    />
-                  </div>
                 </div>
+                <div className="text-sm">
+                  <a href="#" className="text-green-600 hover:underline font-medium">
+                    Forgot your password?
+                  </a>
+                </div>
+              </div>
 
-                <div>
-                  <div className="flex items-center justify-between">
-                    <label htmlFor="password" className="text-base font-medium text-gray-900">
-                      Password
-                    </label>
-                    <a
-                      href="#"
-                      className="text-sm font-medium text-orange-500 transition-all duration-200 hover:text-orange-600 hover:underline"
-                    >
-                      Forgot password?
-                    </a>
-                  </div>
-                  <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
-                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <svg
-                        className="w-5 h-5"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 008 4.07M3 15.364c.64-1.319 1-2.8 1-4.364 0-1.457.39-2.823 1.07-4"
-                        />
-                      </svg>
-                    </div>
-                    <input
-                      type="password"
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      placeholder="Enter your password"
-                      className="block w-full py-4 pl-10 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
-                    />
-                  </div>
-                </div>
+              <div className="!mt-12">
+                <button
+                  type="submit"
+                  className="w-full shadow-xl py-2.5 px-4 text-[15px] font-medium tracking-wide rounded-lg text-white bg-green-600 hover:bg-green-700 focus:outline-none"
+                >
+                  Log in
+                </button>
+              </div>
+            </form>
+          </div>
 
-                <div>
-                  <button
-                    type="submit"
-                    className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:bg-blue-700"
-                  >
-                    Log in
-                  </button>
-                </div>
-
-                <div className="text-center">
-                  <p className="text-base text-gray-600">
-                    Not an admin?{' '}
-                    <a
-                      href="/"
-                      className="font-medium text-orange-500 transition-all duration-200 hover:text-orange-600 hover:underline"
-                    >
-                      Go back home
-                    </a>
-                  </p>
-                </div>
-              </form>
-            </div>
+          {/* Side Image */}
+          <div className="max-lg:mt-8">
+            <img
+              src="https://readymadeui.com/login-image.webp"
+              className="w-full aspect-[71/50] max-lg:w-4/5 mx-auto block object-cover rounded-lg shadow"
+              alt="admin login"
+            />
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

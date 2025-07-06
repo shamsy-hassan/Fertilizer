@@ -22,7 +22,7 @@ export default function FarmerDashboard() {
       </div>
 
       {/* Main content area shifted right by 20rem */}
-      <div className="ml-[20rem] flex-1 h-[calc(100vh-5rem)] overflow-y-auto p-4">
+      <div className="ml-[16rem] flex-1 h-[calc(100vh-5rem)] overflow-y-auto p-4 bg-gradient-to-r from-green-200 via-white to-green-50">
         <Routes>
           <Route path="/" element={<FarmerHome />} />
           <Route path="climate" element={<AgroClimateAdvice />} />

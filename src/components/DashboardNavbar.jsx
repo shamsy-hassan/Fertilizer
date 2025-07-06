@@ -28,19 +28,18 @@ export default function DashboardNavbar() {
         <div className="hidden md:flex items-center space-x-6">
           {/* Messages */}
           <Link to="/messages" className="relative">
-            <EnvelopeIcon className="w-6 h-6" />
-            <span className="absolute -top-1 -right-2 bg-red-600 text-xs rounded-full px-1">
-              4
-            </span>
-          </Link>
+  <EnvelopeIcon className="w-6 h-6" />
+  <span className="absolute -top-1 -right-2 bg-red-600 text-xs rounded-full px-1">
+    4
+  </span>
+</Link>
 
-          {/* Notifications */}
-          <Link to="/notifications" className="relative">
-            <BellIcon className="w-6 h-6" />
-            <span className="absolute -top-1 -right-2 bg-red-600 text-xs rounded-full px-1">
-              17
-            </span>
-          </Link>
+<Link to="/notifications" className="relative">
+  <BellIcon className="w-6 h-6" />
+  <span className="absolute -top-1 -right-2 bg-red-600 text-xs rounded-full px-1">
+    17
+  </span>
+</Link>
 
           {/* Profile Dropdown */}
           <div className="relative">

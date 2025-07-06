@@ -8,7 +8,7 @@ import { FcMoneyTransfer } from 'react-icons/fc';
 
 export default function FarmerSidebar() {
   return (
-    <aside className="h-screen w-[20rem] bg-white p-4 shadow-xl flex flex-col pt-10">
+    <aside className="h-screen w-[20rem] bg-gradient-to-r from-green-200 via-white to-green-50 p-4 shadow-xl flex flex-col pt-10">
       <div className="mb-6 text-center">
         <h3 className="text-2xl font-bold text-blue-gray-900">Farmer Portal</h3>
       </div>

@@ -8,6 +8,37 @@
       "joined": "2023-01-15"
     }
   ],
+  "marketListings": [
+    {
+      "id": "1",
+      "farmerId": 101,
+      "crop": "Maize",
+      "quantity": "50 bags",
+      "pricePerUnit": 3000,
+      "status": "Requested",
+      "buyerMatch": null
+    },
+    {
+      "id": "946a",
+      "crop": "beans",
+      "quantity": "40",
+      "pricePerUnit": "2500",
+      "status": "Scheduled for Pickup",
+      "buyerMatch": null,
+      "farmerId": 101,
+      "pickupLocation": null,
+      "pickupDate": null
+    }
+  ],
+  "buyerRequests": [
+    {
+      "id": "1",
+      "buyerName": "Nairobi Cereal Ltd",
+      "crop": "Maize",
+      "requiredQuantity": "100 bags",
+      "priceOffer": 3200
+    }
+  ],
   "categories": [
     {
       "id": "1",

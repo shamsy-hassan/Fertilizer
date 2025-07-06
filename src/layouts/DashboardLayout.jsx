@@ -8,23 +8,21 @@ export default function DashboardLayout() {
   const isAdmin = location.pathname.startsWith("/admin-dashboard");
 
   return (
-    <div className="flex-1 p-6 overflow-y-auto bg-gray-50 pt-20">
-  
+  <div className="flex-1 overflow-y-auto bg-gray-50 pt-20">
+    {/* Shared dashboard navbar */}
+    <DashboardNavbar />
 
-      {/* Shared dashboard navbar */}
-      <DashboardNavbar />
+    <div className="flex flex-1 overflow-hidden">
+      {/* Conditional Sidebar */}
+      <div className="w-[2rem] bg-white shadow-lg overflow-y-auto">
+        {isAdmin ? <AdminSidebar /> : <FarmerSidebar />}
+      </div>
 
-      <div className="flex flex-1 overflow-hidden">
-        {/* Conditional Sidebar */}
-        <div className="w-[20rem] bg-white shadow-lg overflow-y-auto">
-          {isAdmin ? <AdminSidebar /> : <FarmerSidebar />}
-        </div>
-
-        {/* Main Content */}
-        <div className="flex-1 p-6 overflow-y-auto bg-gray-50">
-          <Outlet />
-        </div>
+      {/* Main Content */}
+      <div className="flex-1 px-4 py-2 overflow-y-auto bg-gray-50">
+        <Outlet />
       </div>
     </div>
-  );
+  </div>
+);
 }

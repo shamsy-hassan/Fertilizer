@@ -93,7 +93,7 @@ export default function FarmerManagement() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-6xl mx-auto p-6 bg-gradient-to-r from-green-200 via-white to-green-50 rounded-lg shadow-md">
       <header className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center">
         <h1 className="text-2xl font-semibold text-gray-800 mb-4 sm:mb-0">
           Farmer Management

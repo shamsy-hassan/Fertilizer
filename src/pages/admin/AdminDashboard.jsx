@@ -14,7 +14,7 @@ import SaccoManagement from './SaccoManagement';
 
 export default function AdminDashboard() {
   return (
-    <div className="flex h-[calc(100vh-5rem)] overflow-hidden">
+    <div className="flex h-[calc(100vh-5rem)] overflow-hidden bg-gradient-to-r from-green-200 via-white to-green-50">
       <div className="w-64 fixed top-20 bottom-0 left-0 bg-white border-r z-10">
         <AdminSidebar />
       </div>

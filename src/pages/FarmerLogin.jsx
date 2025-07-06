@@ -1,125 +1,136 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function FarmerLogin() {
-  const [phone, setPhone] = useState('')
-  const [name, setName] = useState('')
-  const [region, setRegion] = useState('')
-  const [isNewFarmer, setIsNewFarmer] = useState(false)
+   const [username, setUsername] = useState('');
+  const [phone, setPhone] = useState('');
+  const [name, setName] = useState('');
+  const [region, setRegion] = useState('');
+  const [isNewFarmer, setIsNewFarmer] = useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
     if (!phone) {
-      alert('Please enter your phone number')
-      return
+      alert('Please enter your phone number');
+      return;
     }
 
     if (isNewFarmer && (!name || !region)) {
-      alert('Please fill in all fields')
-      return
+      alert('Please fill in all fields');
+      return;
     }
 
-    navigate('/farmer-dashboard')
-  }
+    navigate('/farmer-dashboard');
+  };
 
   return (
-    <section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
-      <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">
-            {isNewFarmer ? 'Farmer Registration' : 'Farmer Login'}
-          </h2>
-          <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600">
-            Access your farming resources and tools
+    <div className="lg:min-h-screen flex flex-col items-center justify-center p-6 bg-gradient-to-r from-green-200 via-white to-green-50">
+      <div className="grid lg:grid-cols-2 items-center gap-10 max-w-6xl w-full">
+        {/* Left Side Text */}
+        <div>
+          <h1 className="lg:text-5xl text-4xl font-bold text-slate-900 !leading-tight">
+            Seamless {isNewFarmer ? 'Registration' : 'Login'} for Exclusive Access
+          </h1>
+          <p className="text-[15px] mt-6 text-slate-600 leading-relaxed">
+            Immerse yourself in a hassle-free {isNewFarmer ? 'sign up' : 'sign in'} journey with our intuitively designed form. Effortlessly access your account.
+          </p>
+          <p className="text-[15px] mt-6 lg:mt-12 text-slate-600">
+            {isNewFarmer ? "Already registered?" : "Don't have an account?"}
+            <button
+              type="button"
+              onClick={() => setIsNewFarmer(!isNewFarmer)}
+              className="text-blue-600 font-medium hover:underline ml-1"
+            >
+              {isNewFarmer ? 'Login here' : 'Register here'}
+            </button>
           </p>
         </div>
 
-        <div className="relative max-w-md mx-auto mt-8 md:mt-16">
-          <div className="overflow-hidden bg-white rounded-md shadow-md">
-            <div className="px-4 py-6 sm:px-8 sm:py-7">
-              <form onSubmit={handleSubmit}>
-                <div className="space-y-5">
+        {/* Right Side Form */}
+        <form
+          onSubmit={handleSubmit}
+          className="max-w-md lg:ml-auto w-full bg-white p-6 rounded-md shadow-md"
+        >
+          <h2 className="text-slate-900 text-3xl font-semibold mb-8">
+            {isNewFarmer ? 'Register' : 'Sign in'}
+          </h2>
 
-                  {isNewFarmer && (
-                    <>
-                      <div>
-                        <label className="text-base font-medium text-gray-900">Full Name</label>
-                        <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
-                          <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            placeholder="Enter your full name"
-                            className="block w-full py-4 pl-4 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600"
-                            required
-                          />
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="text-base font-medium text-gray-900">Region</label>
-                        <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
-                          <select
-                            value={region}
-                            onChange={(e) => setRegion(e.target.value)}
-                            className="block w-full py-4 pl-4 pr-4 text-black bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600"
-                            required
-                          >
-                            <option value="">Select your region</option>
-                            <option value="northeastern">Northeastern (Arid)</option>
-                            <option value="tana">Tana River</option>
-                            <option value="highRainfall">High-Rainfall Zones</option>
-                          </select>
-                        </div>
-                      </div>
-                    </>
-                  )}
-
-                  <div>
-                    <label className="text-base font-medium text-gray-900">Phone Number</label>
-                    <div className="mt-2.5 relative text-gray-400 focus-within:text-gray-600">
-                      <input
-                        type="tel"
-                        value={phone}
-                        onChange={(e) => setPhone(e.target.value)}
-                        placeholder="0712345678"
-                        className="block w-full py-4 pl-4 pr-4 text-black placeholder-gray-500 transition-all duration-200 bg-white border border-gray-200 rounded-md focus:outline-none focus:border-blue-600"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <button
-                      type="submit"
-                      className="inline-flex items-center justify-center w-full px-4 py-4 text-base font-semibold text-white transition-all duration-200 bg-blue-600 border border-transparent rounded-md focus:outline-none hover:bg-blue-700 focus:bg-blue-700"
-                    >
-                      {isNewFarmer ? 'Register' : 'Login'}
-                    </button>
-                  </div>
-
-                  <div className="text-center">
-                    <p className="text-base text-gray-600">
-                      {isNewFarmer ? 'Already registered?' : 'New farmer?'}{' '}
-                      <button
-                        type="button"
-                        onClick={() => setIsNewFarmer(!isNewFarmer)}
-                        className="font-medium text-orange-500 transition-all duration-200 hover:text-orange-600 hover:underline"
-                      >
-                        {isNewFarmer ? 'Login here' : 'Register here'}
-                      </button>
-                    </p>
-                  </div>
-
+          <div className="space-y-6">
+            {isNewFarmer && (
+              <>
+                <div>
+                  <label className="text-sm text-slate-900 font-medium mb-2 block">Full Name</label>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    placeholder="Enter full name"
+                    className="bg-slate-100 w-full text-sm text-slate-900 px-4 py-3 rounded-md outline-0 border border-gray-200 focus:border-blue-600 focus:bg-transparent"
+                  />
                 </div>
-              </form>
+
+                <div>
+                  <label className="text-sm text-slate-900 font-medium mb-2 block">Region</label>
+                  <select
+                    value={region}
+                    onChange={(e) => setRegion(e.target.value)}
+                    required
+                    className="bg-slate-100 w-full text-sm text-slate-900 px-4 py-3 rounded-md outline-0 border border-gray-200 focus:border-blue-600 focus:bg-transparent"
+                  >
+                    <option value="">Select your region</option>
+                    <option value="northeastern">Northeastern (Arid)</option>
+                    <option value="tana">Tana River</option>
+                    <option value="highRainfall">High-Rainfall Zones</option>
+                  </select>
+                </div>
+              </>
+            )}
+
+            <div>
+              <label className="text-sm text-slate-900 font-medium mb-2 block">Username</label>
+                <input
+                    type="text"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    placeholder="Enter user name"
+                    className="w-full text-sm text-slate-900 border border-slate-300 pl-4 pr-10 py-3 rounded-lg outline-green-600 bg-green-50 focus:bg-white"
+                  />
             </div>
+
+
+            <div>
+              <label className="text-sm text-slate-900 font-medium mb-2 block">Phone Number</label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                required
+                placeholder="Enter Phone Number"
+                 className="w-full text-sm text-slate-900 border border-slate-300 pl-4 pr-10 py-3 rounded-lg outline-green-600 bg-green-50 focus:bg-white"
+                  />
+            </div>
+
+            
+            <div className="!mt-12">
+              <button
+                type="submit"
+                className="w-full shadow-xl py-2.5 px-4 text-[15px] font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none"
+              >
+                {isNewFarmer ? 'Register' : 'Log in'}
+              </button>
+            </div>
+
+           
+           
+            
           </div>
-        </div>
+        </form>
       </div>
-    </section>
-  )
+    </div>
+  );
 }

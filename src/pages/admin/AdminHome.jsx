@@ -127,7 +127,7 @@ const recentActivities = [
 
 export default function AdminHome() {
   return (
-    <div className="p-6 bg-gray-100 min-h-screen space-y-10">
+    <div className="p-6 bg-gradient-to-r from-green-200 via-white to-green-50 min-h-screen space-y-10">
       <div className="flex flex-col lg:flex-row gap-6">
         <div className="flex-1 bg-white rounded-xl shadow-md p-6">
           <div className="flex justify-between items-center mb-4">
